@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Privacy Policy', url: '/privacy' }
+];
+---
+
+<BaseLayout
+  title="Privacy Policy — BestCryptoDebitCard.com"
+  description="Privacy policy for BestCryptoDebitCard.com. Learn how we handle your data and protect your privacy."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-extrabold text-white mb-4">Privacy Policy</h1>
+    <p class="text-sm text-gray-500 mb-8">Last updated: March 22, 2026</p>
+
+    <div class="space-y-8 text-gray-400">
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">1. Overview</h2>
+        <p class="leading-relaxed">We take the protection of your personal data seriously. This privacy policy explains what data we collect when you visit BestCryptoDebitCard.com, how we use it, and what rights you have regarding your data. This policy applies to all pages on our website.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">2. Data Controller</h2>
+        <p class="leading-relaxed">The data controller responsible for data processing on this website is Mehdi Ayed, contactable at contact [at] bestcryptodebitcard.com.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">3. Data We Collect</h2>
+        <p class="leading-relaxed mb-2">When you visit our website, certain data is automatically collected by our hosting provider (Cloudflare):</p>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>IP address (anonymized)</li>
+          <li>Date and time of access</li>
+          <li>Pages visited</li>
+          <li>Browser type and version</li>
+          <li>Operating system</li>
+          <li>Referrer URL</li>
+        </ul>
+        <p class="leading-relaxed mt-2">This data is collected for security purposes and to ensure the proper functioning of our website. It is not used to identify individual users.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">4. Cookies</h2>
+        <p class="leading-relaxed">Our website is a static site and does not use cookies for tracking or analytics purposes. Cloudflare, our hosting provider, may set strictly necessary cookies for security and performance purposes (such as bot detection). These are essential cookies that do not require consent.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">5. Affiliate Links</h2>
+        <p class="leading-relaxed">Our website contains affiliate links to third-party services. When you click on these links, you will be redirected to the third party's website, which has its own privacy policy. We do not receive any personal data about you from these third parties. We may receive anonymized information about successful referrals for the purpose of commission tracking.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">6. External Fonts</h2>
+        <p class="leading-relaxed">We use Google Fonts to display text on our website. When you load a page, your browser connects to Google's servers to download the font files. Google may collect your IP address and browser information. For more details, see Google's privacy policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300">policies.google.com/privacy</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">7. Your Rights (GDPR)</h2>
+        <p class="leading-relaxed mb-2">If you are in the European Economic Area, you have the following rights:</p>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>Right of access to your personal data</li>
+          <li>Right to rectification of inaccurate data</li>
+          <li>Right to erasure ("right to be forgotten")</li>
+          <li>Right to restriction of processing</li>
+          <li>Right to data portability</li>
+          <li>Right to object to processing</li>
+        </ul>
+        <p class="leading-relaxed mt-2">To exercise any of these rights, contact us at the email address provided above.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">8. Changes to This Policy</h2>
+        <p class="leading-relaxed">We may update this privacy policy from time to time. Changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically.</p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

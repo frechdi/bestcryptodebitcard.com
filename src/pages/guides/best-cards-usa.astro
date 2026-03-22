@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CardItem from '../../components/CardItem.astro';
+import { cards } from '../../content/cards';
+
+const usCards = cards.filter(c => c.availableRegions.some(r => r.includes('US')));
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Guides', url: '/guides/how-crypto-cards-work' },
+  { name: 'Best Cards USA', url: '/guides/best-cards-usa' }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Best Crypto Debit Cards for US Customers 2026",
+  "author": { "@type": "Organization", "name": "BestCryptoDebitCard.com" },
+  "datePublished": "2026-01-20",
+  "dateModified": "2026-03-22"
+};
+---
+
+<BaseLayout
+  title="Best Crypto Debit Cards for USA 2026 — Top Cards for US Customers | BestCryptoDebitCard"
+  description="Find the best crypto debit cards available to US residents in 2026. Compare Coinbase, Crypto.com, BitPay, and more with fees, cashback, and features."
+  ogType="article"
+  jsonLd={articleSchema}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <header class="mb-8">
+      <p class="text-amber-400 text-sm font-semibold mb-2">Guide</p>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Best Crypto Debit Cards for US Customers</h1>
+      <p class="text-lg text-gray-400">A comprehensive guide to crypto debit cards available in the United States, with detailed comparisons and recommendations for American users.</p>
+      <p class="text-sm text-gray-500 mt-2">Last updated: March 22, 2026</p>
+    </header>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">The US Crypto Card Landscape</h2>
+      <p class="text-gray-400 leading-relaxed mb-4">The United States has a unique regulatory environment for crypto debit cards. Cards must comply with state-by-state money transmitter regulations, federal banking laws, and SEC/CFTC oversight of the underlying crypto assets. This means fewer international cards are available to US residents compared to Europe, but the cards that are available tend to be issued by well-regulated, established companies.</p>
+      <p class="text-gray-400 leading-relaxed mb-4">The major players in the US market include <a href="/coinbase-card" class="text-amber-400 hover:text-amber-300">Coinbase</a>, backed by a NASDAQ-listed company; <a href="/crypto-com-visa-card" class="text-amber-400 hover:text-amber-300">Crypto.com</a>, one of the largest global crypto platforms; and <a href="/bitpay-card" class="text-amber-400 hover:text-amber-300">BitPay</a>, a veteran crypto payments provider. Each offers FDIC-insured USD balances through their banking partners, providing a safety net that is rare in the crypto card space globally.</p>
+      <p class="text-gray-400 leading-relaxed">One advantage of US-available cards is that they are typically issued by FDIC-member banks, meaning your fiat balance on the card is insured up to $250,000. This provides the same level of protection you would get from a traditional bank account, making these cards significantly safer than holding funds on an uninsured crypto exchange.</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Our Top Picks for US Residents</h2>
+
+      <div class="bg-navy-800 border border-amber-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-amber-400 text-sm font-semibold mb-1">Best Overall for USA</h3>
+        <h4 class="text-xl font-bold text-white mb-2">Coinbase Card</h4>
+        <p class="text-gray-400 text-sm leading-relaxed mb-3">For US residents, the Coinbase Card edges ahead as our top recommendation. While Crypto.com offers higher cashback rates, Coinbase's status as a publicly traded, SEC-reporting company provides unmatched regulatory transparency. The zero-fee USDC spending option makes it extremely cost-effective for users willing to convert to stablecoins before spending. Up to 4% cashback in select cryptocurrencies adds genuine earning potential to every purchase.</p>
+        <a href="/coinbase-card" class="text-amber-400 font-medium text-sm hover:text-amber-300">Read full Coinbase Card review →</a>
+      </div>
+
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 mb-6">
+        <h3 class="text-gray-400 text-sm font-semibold mb-1">Best Cashback for USA</h3>
+        <h4 class="text-xl font-bold text-white mb-2">Crypto.com Visa Card</h4>
+        <p class="text-gray-400 text-sm leading-relaxed mb-3">For users who want the highest possible cashback rates, the Crypto.com Visa Card remains the king. With up to 8% cashback through CRO staking and premium perks like free Spotify and Netflix, the rewards potential far exceeds any traditional card. The Ruby Steel tier with 2% cashback and free Spotify requires only $400 in CRO staking, making it an accessible entry point for most users.</p>
+        <a href="/crypto-com-visa-card" class="text-amber-400 font-medium text-sm hover:text-amber-300">Read full Crypto.com review →</a>
+      </div>
+
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 mb-6">
+        <h3 class="text-gray-400 text-sm font-semibold mb-1">Best for Bitcoin Purists</h3>
+        <h4 class="text-xl font-bold text-white mb-2">BitPay Card</h4>
+        <p class="text-gray-400 text-sm leading-relaxed mb-3">BitPay is the longest-running crypto payment processor and its card reflects that experience. The pre-load model is ideal for users who want to lock in their exchange rate and avoid point-of-sale volatility. FDIC-insured USD balances, Apple Pay and Google Pay support, and a decade-plus track record make it a trustworthy choice for conservative crypto users.</p>
+        <a href="/bitpay-card" class="text-amber-400 font-medium text-sm hover:text-amber-300">Read full BitPay Card review →</a>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">US Tax Considerations</h2>
+      <p class="text-gray-400 leading-relaxed mb-4">US crypto card users face specific tax obligations under IRS guidelines. The IRS treats cryptocurrency as property, meaning every time you spend crypto through your card, it is considered a sale that may trigger capital gains or losses. This applies to every single card transaction, no matter how small.</p>
+      <p class="text-gray-400 leading-relaxed mb-4">The key factors are your cost basis (what you paid for the crypto) and the fair market value at the time of spending. If you bought Bitcoin at $30,000 and spend it when it is worth $60,000, the $30,000 difference is a taxable capital gain. If you have held the crypto for more than one year, it qualifies for long-term capital gains rates, which are lower than short-term rates.</p>
+      <p class="text-gray-400 leading-relaxed">To simplify tax reporting, consider spending stablecoins like USDC, which typically have no capital gains since their value remains at $1. Coinbase makes this particularly easy with zero conversion fees for USDC spending. For more details, read our <a href="/blog/tax-implications-crypto-cards" class="text-amber-400 hover:text-amber-300">tax implications guide</a>.</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">All US-Available Cards</h2>
+      <div class="space-y-4">
+        {usCards.map((card, index) => (
+          <CardItem card={card} rank={index + 1} featured={index === 0} />
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">State Availability</h2>
+      <p class="text-gray-400 leading-relaxed mb-4">Not all crypto cards are available in every US state. Some states have stricter cryptocurrency regulations that prevent certain providers from operating. New York, for example, requires a BitLicense, which limits the number of providers available to residents. Hawaii has historically had restrictions on crypto services, though these have been relaxing.</p>
+      <p class="text-gray-400 leading-relaxed">Before signing up for any card, check the provider's website for state-by-state availability. Coinbase, as a fully regulated US company, has the broadest state coverage. Crypto.com and BitPay also have strong US coverage but may exclude a handful of states.</p>
+    </section>
+  </article>
+</BaseLayout>

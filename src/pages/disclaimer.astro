@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Disclaimer', url: '/disclaimer' }
+];
+---
+
+<BaseLayout
+  title="Disclaimer — BestCryptoDebitCard.com"
+  description="Disclaimer and affiliate disclosure for BestCryptoDebitCard.com. Important information about our reviews and recommendations."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-extrabold text-white mb-4">Disclaimer</h1>
+    <p class="text-sm text-gray-500 mb-8">Last updated: March 22, 2026</p>
+
+    <div class="space-y-8 text-gray-400">
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">General Disclaimer</h2>
+        <p class="leading-relaxed">The information provided on BestCryptoDebitCard.com is for general informational purposes only. All information on the site is provided in good faith. However, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Affiliate Disclosure</h2>
+        <p class="leading-relaxed mb-4">BestCryptoDebitCard.com is an affiliate website. Some of the links on our pages are affiliate links, meaning we may earn a commission if you click through and sign up for a product or service. This commission comes at no additional cost to you.</p>
+        <p class="leading-relaxed">Affiliate relationships may exist with the following companies mentioned on this site, including but not limited to: Crypto.com, Binance, Coinbase, BitPay, Nexo, Wirex, Revolut, Plutus, Uphold, Tap Global, Trastra, and Bitnovo. Our reviews and ratings are based on our independent assessment and are not influenced by affiliate compensation.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Not Financial Advice</h2>
+        <p class="leading-relaxed">The content on this website does not constitute financial advice, investment advice, trading advice, or any other sort of advice. You should not treat any of the website's content as such. BestCryptoDebitCard.com does not recommend that any cryptocurrency or financial product should be bought, sold, or held by you. Conduct your own due diligence and consult a licensed financial advisor before making any investment decisions.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Not Tax Advice</h2>
+        <p class="leading-relaxed">Information regarding tax implications of using crypto debit cards is provided for informational purposes only and does not constitute tax advice. Tax laws are complex and vary by jurisdiction. You should consult a qualified tax professional for advice specific to your individual situation before making decisions based on tax-related information on this site.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Accuracy of Information</h2>
+        <p class="leading-relaxed">We strive to keep the information on this website accurate and up-to-date. However, crypto debit card features, fees, terms, and availability change frequently. The information presented may not reflect the most current state of any card or service. Always verify details directly with the card provider before making a decision. Card ratings represent our editorial opinion and may differ from other sources.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Risk Warning</h2>
+        <p class="leading-relaxed">Cryptocurrency is a highly volatile and speculative asset class. The value of cryptocurrency can fluctuate dramatically and you could lose some or all of your investment. Using a crypto debit card involves the risk of loss due to price volatility at the time of conversion. Past performance of any cryptocurrency is not indicative of future results.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Third-Party Links</h2>
+        <p class="leading-relaxed">This website may contain links to third-party websites or services that are not owned or controlled by BestCryptoDebitCard.com. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You acknowledge and agree that we shall not be responsible or liable for any damage or loss caused by the use of any third-party website or service.</p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

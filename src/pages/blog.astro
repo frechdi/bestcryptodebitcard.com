@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/blog' }
+];
+
+const posts = [
+  {
+    slug: 'crypto-cards-vs-traditional',
+    title: 'Crypto Debit Cards vs Traditional Debit Cards: A Complete Comparison',
+    description: 'How do crypto debit cards stack up against traditional bank cards? We compare fees, rewards, security, and convenience in this detailed analysis.',
+    date: 'March 15, 2026',
+    category: 'Comparison'
+  },
+  {
+    slug: 'tax-implications-crypto-cards',
+    title: 'Tax Implications of Using Crypto Debit Cards',
+    description: 'Understanding the tax consequences of spending cryptocurrency through debit cards. Capital gains, reporting requirements, and strategies to minimize your tax burden.',
+    date: 'March 8, 2026',
+    category: 'Tax & Legal'
+  },
+  {
+    slug: 'future-of-crypto-payments',
+    title: 'The Future of Crypto Payments in 2026 and Beyond',
+    description: 'From CBDC integration to DeFi cards, explore the trends shaping the next generation of cryptocurrency payment solutions.',
+    date: 'February 28, 2026',
+    category: 'Industry'
+  }
+];
+---
+
+<BaseLayout
+  title="Blog — Crypto Card News, Guides & Analysis | BestCryptoDebitCard"
+  description="Stay informed with the latest crypto debit card news, in-depth analysis, tax guides, and industry trends. Expert content for crypto card users."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Blog</h1>
+    <p class="text-lg text-gray-400 mb-8">Expert analysis, guides, and news about crypto debit cards and the future of cryptocurrency payments.</p>
+
+    <div class="space-y-6">
+      {posts.map(post => (
+        <article class="card-hover bg-navy-800 border border-navy-700 rounded-xl p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              {post.category}
+            </span>
+            <span class="text-gray-500 text-sm">{post.date}</span>
+          </div>
+          <h2 class="text-xl font-bold text-white mb-2">
+            <a href={`/blog/${post.slug}`} class="hover:text-amber-400 transition-colors">{post.title}</a>
+          </h2>
+          <p class="text-gray-400 text-sm mb-4">{post.description}</p>
+          <a href={`/blog/${post.slug}`} class="text-amber-400 text-sm font-medium hover:text-amber-300 inline-flex items-center gap-1">
+            Read Article
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

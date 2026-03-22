@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CardItem from '../../components/CardItem.astro';
+import { cards } from '../../content/cards';
+
+const cashbackCards = cards.filter(c => c.cashbackRate !== 'None').sort((a, b) => {
+  const getMax = (rate: string) => {
+    const match = rate.match(/(\d+)/);
+    return match ? parseInt(match[1]) : 0;
+  };
+  return getMax(b.cashbackRate) - getMax(a.cashbackRate);
+});
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Guides', url: '/guides/how-crypto-cards-work' },
+  { name: 'Cashback Cards', url: '/guides/crypto-cards-with-cashback' }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Best Crypto Debit Cards with Cashback 2026",
+  "author": { "@type": "Organization", "name": "BestCryptoDebitCard.com" },
+  "datePublished": "2026-02-15",
+  "dateModified": "2026-03-22"
+};
+---
+
+<BaseLayout
+  title="Best Crypto Debit Cards with Cashback 2026 — Earn Up to 8% | BestCryptoDebitCard"
+  description="Compare the best crypto debit cards with cashback rewards in 2026. Earn up to 8% back on purchases. Detailed comparison of rates, staking requirements, and terms."
+  ogType="article"
+  jsonLd={articleSchema}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <header class="mb-8">
+      <p class="text-amber-400 text-sm font-semibold mb-2">Guide</p>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Best Crypto Cards with Cashback</h1>
+      <p class="text-lg text-gray-400">Maximize your crypto rewards with the highest-paying cashback cards. We compare rates, staking requirements, and the true value of each cashback program.</p>
+      <p class="text-sm text-gray-500 mt-2">Last updated: March 22, 2026</p>
+    </header>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Cashback Comparison at a Glance</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm mb-4">
+          <thead>
+            <tr class="border-b border-navy-700">
+              <th class="text-left py-3 px-4 text-gray-400 font-semibold">Card</th>
+              <th class="text-center py-3 px-4 text-gray-400 font-semibold">Max Rate</th>
+              <th class="text-center py-3 px-4 text-gray-400 font-semibold">Free Tier Rate</th>
+              <th class="text-center py-3 px-4 text-gray-400 font-semibold">Staking Required</th>
+              <th class="text-center py-3 px-4 text-gray-400 font-semibold">Paid In</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-300">
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4"><a href="/crypto-com-visa-card" class="text-white font-medium hover:text-amber-400">Crypto.com</a></td>
+              <td class="py-3 px-4 text-center text-amber-400 font-bold">8%</td>
+              <td class="py-3 px-4 text-center">1%</td>
+              <td class="py-3 px-4 text-center">CRO ($400-$400k)</td>
+              <td class="py-3 px-4 text-center">CRO</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4"><a href="/binance-card" class="text-white font-medium hover:text-amber-400">Binance</a></td>
+              <td class="py-3 px-4 text-center text-amber-400 font-bold">8%</td>
+              <td class="py-3 px-4 text-center">0.1%</td>
+              <td class="py-3 px-4 text-center">BNB (1-600+)</td>
+              <td class="py-3 px-4 text-center">BNB</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4"><a href="/wirex-card" class="text-white font-medium hover:text-amber-400">Wirex</a></td>
+              <td class="py-3 px-4 text-center text-amber-400 font-bold">8%</td>
+              <td class="py-3 px-4 text-center">0.5%</td>
+              <td class="py-3 px-4 text-center">WXT</td>
+              <td class="py-3 px-4 text-center">WXT</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4"><a href="/coinbase-card" class="text-white font-medium hover:text-amber-400">Coinbase</a></td>
+              <td class="py-3 px-4 text-center font-bold">4%</td>
+              <td class="py-3 px-4 text-center">1-4%</td>
+              <td class="py-3 px-4 text-center">None</td>
+              <td class="py-3 px-4 text-center">Choice of crypto</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4"><a href="/uphold-card" class="text-white font-medium hover:text-amber-400">Uphold</a></td>
+              <td class="py-3 px-4 text-center font-bold">4%</td>
+              <td class="py-3 px-4 text-center">1%</td>
+              <td class="py-3 px-4 text-center">None</td>
+              <td class="py-3 px-4 text-center">Crypto</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4"><a href="/plutus-card" class="text-white font-medium hover:text-amber-400">Plutus</a></td>
+              <td class="py-3 px-4 text-center font-bold">8%</td>
+              <td class="py-3 px-4 text-center text-green-400 font-bold">3%</td>
+              <td class="py-3 px-4 text-center">PLU (optional)</td>
+              <td class="py-3 px-4 text-center">PLU</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4"><a href="/bitpay-card" class="text-white font-medium hover:text-amber-400">BitPay</a></td>
+              <td class="py-3 px-4 text-center font-bold">3%</td>
+              <td class="py-3 px-4 text-center">1%</td>
+              <td class="py-3 px-4 text-center">None</td>
+              <td class="py-3 px-4 text-center">BTC/Crypto</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4"><a href="/nexo-card" class="text-white font-medium hover:text-amber-400">Nexo</a></td>
+              <td class="py-3 px-4 text-center font-bold">2%</td>
+              <td class="py-3 px-4 text-center">0.5%</td>
+              <td class="py-3 px-4 text-center">NEXO (for best rates)</td>
+              <td class="py-3 px-4 text-center">NEXO/BTC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Understanding Crypto Cashback</h2>
+      <p class="text-gray-400 leading-relaxed mb-4">Crypto cashback works similarly to traditional card cashback, but with important differences. Instead of receiving dollars or euros back, you receive cryptocurrency. This creates both an opportunity and a risk: if the reward token appreciates, your effective cashback rate increases; if it depreciates, your rewards lose value.</p>
+      <p class="text-gray-400 leading-relaxed mb-4">Most crypto card cashback is paid in the platform's native token (CRO for Crypto.com, BNB for Binance, PLU for Plutus, WXT for Wirex). This means your rewards are tied to the performance of that specific token. Coinbase is a notable exception, allowing you to choose which cryptocurrency you receive as cashback.</p>
+      <p class="text-gray-400 leading-relaxed">When evaluating cashback rates, consider the total cost of achieving that rate. A card offering 8% cashback but requiring $400,000 in staking has a very different value proposition than a card offering 3% with no staking requirement. Calculate your expected annual spending and the cashback earned to determine whether the staking requirement makes financial sense for your situation.</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Best Free Cashback: Plutus</h2>
+      <p class="text-gray-400 leading-relaxed mb-4">If you want the highest cashback rate without any staking or paid subscription, <a href="/plutus-card" class="text-amber-400 hover:text-amber-300">Plutus</a> is the clear winner at 3% on its free Starter tier. No other free crypto card comes close to this rate. The Perks marketplace adds further value by reimbursing popular subscriptions. For European users, Plutus offers the best return on spending with zero upfront commitment.</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Best Maximum Cashback: Crypto.com</h2>
+      <p class="text-gray-400 leading-relaxed mb-4">For users willing to stake, <a href="/crypto-com-visa-card" class="text-amber-400 hover:text-amber-300">Crypto.com</a> offers the best overall cashback package. The Ruby Steel tier at just $400 in CRO staking provides 2% cashback plus a free Spotify subscription (worth approximately $120/year), making the effective return significantly higher. The mid-tier Jade Green/Royal Indigo cards with 3% cashback plus Netflix and Spotify reimbursements offer arguably the best value for active spenders.</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">All Cards with Cashback Ranked</h2>
+      <div class="space-y-4">
+        {cashbackCards.map((card, index) => (
+          <CardItem card={card} rank={index + 1} featured={index === 0} />
+        ))}
+      </div>
+    </section>
+  </article>
+</BaseLayout>

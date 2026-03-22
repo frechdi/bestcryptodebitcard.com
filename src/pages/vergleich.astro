@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import CardItem from '../components/CardItem.astro';
+import { cards } from '../content/cards';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Comparison', url: '/vergleich' }
+];
+---
+
+<BaseLayout
+  title="Crypto Debit Card Comparison 2026 — All 12 Cards Compared | BestCryptoDebitCard"
+  description="Compare all 12 crypto debit cards side by side. Cashback rates, fees, supported cryptocurrencies, and available regions at a glance."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Crypto Debit Card Comparison 2026</h1>
+    <p class="text-lg text-gray-400 mb-8 max-w-3xl">
+      Compare all 12 reviewed crypto debit cards side by side. Our comparison table helps you find the right card based on cashback rates, fees, supported cryptocurrencies, and regional availability.
+    </p>
+
+    <!-- Main Comparison Table -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-white mb-4">Quick Comparison Table</h2>
+      <ComparisonTable cards={cards} />
+    </section>
+
+    <!-- Detailed Feature Comparison -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-white mb-6">Detailed Feature Comparison</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-navy-700">
+              <th class="text-left py-3 px-4 text-gray-400 font-semibold">Feature</th>
+              <th class="text-center py-3 px-4 text-amber-400 font-semibold">Crypto.com</th>
+              <th class="text-center py-3 px-4 text-amber-400 font-semibold">Binance</th>
+              <th class="text-center py-3 px-4 text-amber-400 font-semibold">Coinbase</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-300">
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 font-medium text-white">Max Cashback</td>
+              <td class="py-3 px-4 text-center">8%</td>
+              <td class="py-3 px-4 text-center">8%</td>
+              <td class="py-3 px-4 text-center">4%</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 font-medium text-white">Staking Required</td>
+              <td class="py-3 px-4 text-center">CRO</td>
+              <td class="py-3 px-4 text-center">BNB</td>
+              <td class="py-3 px-4 text-center">None</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 font-medium text-white">Annual Fee</td>
+              <td class="py-3 px-4 text-center">$0</td>
+              <td class="py-3 px-4 text-center">$0</td>
+              <td class="py-3 px-4 text-center">$0</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 font-medium text-white">Transaction Fee</td>
+              <td class="py-3 px-4 text-center">0%</td>
+              <td class="py-3 px-4 text-center">0%</td>
+              <td class="py-3 px-4 text-center">2.49% (0% for USDC)</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 font-medium text-white">Card Network</td>
+              <td class="py-3 px-4 text-center">Visa</td>
+              <td class="py-3 px-4 text-center">Visa</td>
+              <td class="py-3 px-4 text-center">Visa</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 font-medium text-white">Metal Card</td>
+              <td class="py-3 px-4 text-center text-green-400">Yes</td>
+              <td class="py-3 px-4 text-center text-red-400">No</td>
+              <td class="py-3 px-4 text-center text-red-400">No</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 font-medium text-white">Perks</td>
+              <td class="py-3 px-4 text-center">Spotify, Netflix, Lounge</td>
+              <td class="py-3 px-4 text-center">None</td>
+              <td class="py-3 px-4 text-center">None</td>
+            </tr>
+            <tr class="border-b border-navy-700/50">
+              <td class="py-3 px-4 font-medium text-white">US Available</td>
+              <td class="py-3 px-4 text-center text-green-400">Yes</td>
+              <td class="py-3 px-4 text-center text-amber-400">Limited</td>
+              <td class="py-3 px-4 text-center text-green-400">Yes</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-white">EU Available</td>
+              <td class="py-3 px-4 text-center text-green-400">Yes</td>
+              <td class="py-3 px-4 text-center text-green-400">Yes</td>
+              <td class="py-3 px-4 text-center text-green-400">Yes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Category Winners -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-white mb-6">Category Winners</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-navy-800 border border-amber-500/30 rounded-xl p-6">
+          <p class="text-amber-400 text-sm font-semibold mb-2">Best Overall</p>
+          <h3 class="text-white font-bold text-lg mb-1">Crypto.com Visa Card</h3>
+          <p class="text-gray-400 text-sm">Best combination of cashback, perks, and global availability.</p>
+          <a href="/crypto-com-visa-card" class="text-amber-400 text-sm font-medium mt-2 inline-block hover:text-amber-300">Read Review →</a>
+        </div>
+        <div class="bg-navy-800 border border-amber-500/30 rounded-xl p-6">
+          <p class="text-amber-400 text-sm font-semibold mb-2">Best for Zero Fees</p>
+          <h3 class="text-white font-bold text-lg mb-1">Binance Card</h3>
+          <p class="text-gray-400 text-sm">Zero transaction fees with generous BNB-based cashback tiers.</p>
+          <a href="/binance-card" class="text-amber-400 text-sm font-medium mt-2 inline-block hover:text-amber-300">Read Review →</a>
+        </div>
+        <div class="bg-navy-800 border border-amber-500/30 rounded-xl p-6">
+          <p class="text-amber-400 text-sm font-semibold mb-2">Most Trusted</p>
+          <h3 class="text-white font-bold text-lg mb-1">Coinbase Card</h3>
+          <p class="text-gray-400 text-sm">Backed by publicly traded Coinbase with FDIC-insured USD balances.</p>
+          <a href="/coinbase-card" class="text-amber-400 text-sm font-medium mt-2 inline-block hover:text-amber-300">Read Review →</a>
+        </div>
+        <div class="bg-navy-800 border border-amber-500/30 rounded-xl p-6">
+          <p class="text-amber-400 text-sm font-semibold mb-2">Best Without Selling Crypto</p>
+          <h3 class="text-white font-bold text-lg mb-1">Nexo Card</h3>
+          <p class="text-gray-400 text-sm">Spend via credit line without selling your crypto holdings.</p>
+          <a href="/nexo-card" class="text-amber-400 text-sm font-medium mt-2 inline-block hover:text-amber-300">Read Review →</a>
+        </div>
+        <div class="bg-navy-800 border border-amber-500/30 rounded-xl p-6">
+          <p class="text-amber-400 text-sm font-semibold mb-2">Best Free Cashback</p>
+          <h3 class="text-white font-bold text-lg mb-1">Plutus Card</h3>
+          <p class="text-gray-400 text-sm">3% cashback on the free tier with no staking required.</p>
+          <a href="/plutus-card" class="text-amber-400 text-sm font-medium mt-2 inline-block hover:text-amber-300">Read Review →</a>
+        </div>
+        <div class="bg-navy-800 border border-amber-500/30 rounded-xl p-6">
+          <p class="text-amber-400 text-sm font-semibold mb-2">Best All-in-One Banking</p>
+          <h3 class="text-white font-bold text-lg mb-1">Revolut Card</h3>
+          <p class="text-gray-400 text-sm">Full banking experience with crypto, stocks, and deposit insurance.</p>
+          <a href="/revolut-card" class="text-amber-400 text-sm font-medium mt-2 inline-block hover:text-amber-300">Read Review →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Cards -->
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-6">All Cards Ranked</h2>
+      <div class="space-y-4">
+        {cards.map((card, index) => (
+          <CardItem card={card} rank={index + 1} featured={index === 0} />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

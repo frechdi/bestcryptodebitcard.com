@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StarRating from '../components/StarRating.astro';
+import CardItem from '../components/CardItem.astro';
+import { cards, getCardBySlug } from '../content/cards';
+import type { CryptoCard } from '../content/cards';
+
+export function getStaticPaths() {
+  return cards.map(card => ({
+    params: { slug: card.slug },
+    props: { card }
+  }));
+}
+
+interface Props {
+  card: CryptoCard;
+}
+
+const { card } = Astro.props;
+const currentIndex = cards.findIndex(c => c.slug === card.slug);
+const relatedCards = cards.filter((_, i) => i !== currentIndex).slice(0, 3);
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "name": `${card.name} Review`,
+  "reviewBody": card.verdict,
+  "author": {
+    "@type": "Organization",
+    "name": "BestCryptoDebitCard.com"
+  },
+  "itemReviewed": {
+    "@type": "Product",
+    "name": card.name,
+    "category": "Crypto Debit Card"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": card.rating,
+    "bestRating": 10,
+    "worstRating": 0
+  },
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-22"
+};
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Cards', url: '/#comparison' },
+  { name: card.name, url: `/${card.slug}` }
+];
+---
+
+<BaseLayout
+  title={card.metaTitle}
+  description={card.metaDesc}
+  ogType="article"
+  jsonLd={reviewSchema}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Header -->
+    <header class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-16 h-16 bg-navy-800 border border-navy-700 rounded-xl flex items-center justify-center">
+          <svg class="w-10 h-10 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="5" width="20" height="14" rx="2" />
+            <path d="M2 10h20" />
+            <circle cx="17" cy="15" r="1.5" fill="currentColor" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-white">{card.name}</h1>
+          <div class="mt-1">
+            <StarRating rating={card.rating} />
+          </div>
+        </div>
+      </div>
+      <p class="text-lg text-gray-400">{card.description}</p>
+    </header>
+
+    <!-- Quick Facts -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-4 text-center">
+        <p class="text-xs text-gray-500 mb-1">Cashback</p>
+        <p class="text-lg font-bold text-amber-400">{card.cashbackRate}</p>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-4 text-center">
+        <p class="text-xs text-gray-500 mb-1">Annual Fee</p>
+        <p class="text-lg font-bold text-white">{card.annualFee}</p>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-4 text-center">
+        <p class="text-xs text-gray-500 mb-1">Supported Cryptos</p>
+        <p class="text-lg font-bold text-white">{card.supportedCryptos[card.supportedCryptos.length - 1]}</p>
+      </div>
+      <div class="bg-navy-800 border border-navy-700 rounded-xl p-4 text-center">
+        <p class="text-xs text-gray-500 mb-1">Available In</p>
+        <p class="text-lg font-bold text-white">{card.availableRegions.slice(0, 2).join(', ')}</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="bg-gradient-to-r from-amber-500/10 to-amber-600/5 border border-amber-500/30 rounded-xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="text-white font-semibold">Ready to get started with {card.name}?</p>
+        <p class="text-gray-400 text-sm">Sign up through our link and start spending crypto today.</p>
+      </div>
+      <a href={card.affiliateUrl} target="_blank" rel="nofollow sponsored" class="cta-button inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-400 text-navy-950 font-bold rounded-lg whitespace-nowrap">
+        Get {card.name.split(' ')[0]} Card
+        <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+      </a>
+    </div>
+
+    <!-- Pros & Cons -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div class="bg-navy-800 border border-green-500/30 rounded-xl p-6">
+        <h2 class="text-lg font-bold text-green-400 mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          Pros
+        </h2>
+        <ul class="space-y-2">
+          {card.pros.map(pro => (
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              {pro}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-navy-800 border border-red-500/30 rounded-xl p-6">
+        <h2 class="text-lg font-bold text-red-400 mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          Cons
+        </h2>
+        <ul class="space-y-2">
+          {card.cons.map(con => (
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              {con}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Detailed Sections -->
+    {card.sections.map(section => (
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-white mb-4">{section.heading}</h2>
+        <p class="text-gray-400 leading-relaxed">{section.content}</p>
+      </section>
+    ))}
+
+    <!-- Supported Cryptocurrencies -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Supported Cryptocurrencies</h2>
+      <div class="flex flex-wrap gap-2">
+        {card.supportedCryptos.map(crypto => (
+          <span class="inline-flex items-center px-3 py-1.5 bg-navy-800 border border-navy-700 rounded-full text-sm text-gray-300 font-medium">
+            {crypto}
+          </span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Available Regions -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Available Regions</h2>
+      <div class="flex flex-wrap gap-2">
+        {card.availableRegions.map(region => (
+          <span class="inline-flex items-center px-3 py-1.5 bg-navy-800 border border-navy-700 rounded-full text-sm text-gray-300 font-medium">
+            {region}
+          </span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Verdict -->
+    <section class="bg-gradient-to-r from-amber-500/10 to-amber-600/5 border border-amber-500/30 rounded-xl p-6 mb-10">
+      <h2 class="text-2xl font-bold text-white mb-4">Our Verdict</h2>
+      <p class="text-gray-300 leading-relaxed">{card.verdict}</p>
+      <div class="mt-4 flex items-center gap-4">
+        <span class="text-amber-400 font-bold text-2xl">{card.rating}/10</span>
+        <a href={card.affiliateUrl} target="_blank" rel="nofollow sponsored" class="cta-button inline-flex items-center px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-navy-950 font-bold rounded-lg">
+          Visit {card.name.split(' ')[0]}
+          <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Related Cards -->
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-6">Other Cards You Might Like</h2>
+      <div class="space-y-4">
+        {relatedCards.map(related => (
+          <CardItem card={related} />
+        ))}
+      </div>
+    </section>
+  </article>
+</BaseLayout>

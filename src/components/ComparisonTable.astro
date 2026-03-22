@@ -1,0 +1,53 @@
+---
+import type { CryptoCard } from '../content/cards';
+
+interface Props {
+  cards: CryptoCard[];
+}
+
+const { cards } = Astro.props;
+---
+
+<div class="overflow-x-auto">
+  <table class="comparison-table w-full text-sm">
+    <thead>
+      <tr class="border-b border-navy-700">
+        <th class="text-left py-3 px-4 text-gray-400 font-semibold">Card</th>
+        <th class="text-center py-3 px-4 text-gray-400 font-semibold">Rating</th>
+        <th class="text-center py-3 px-4 text-gray-400 font-semibold">Cashback</th>
+        <th class="text-center py-3 px-4 text-gray-400 font-semibold">Annual Fee</th>
+        <th class="text-center py-3 px-4 text-gray-400 font-semibold">Cryptos</th>
+        <th class="text-center py-3 px-4 text-gray-400 font-semibold">Regions</th>
+        <th class="text-center py-3 px-4 text-gray-400 font-semibold">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {cards.map((card, index) => (
+        <tr class={`border-b border-navy-700/50 hover:bg-navy-800/50 transition-colors ${index === 0 ? 'bg-amber-500/5' : ''}`}>
+          <td class="py-4 px-4">
+            <div class="flex items-center gap-3">
+              <span class={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold flex-shrink-0 ${index < 3 ? 'bg-amber-500 text-navy-950' : 'bg-navy-700 text-gray-400'}`}>
+                {index + 1}
+              </span>
+              <a href={`/${card.slug}`} class="text-white font-medium hover:text-amber-400 transition-colors whitespace-nowrap">
+                {card.name}
+              </a>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-center">
+            <span class="text-amber-400 font-bold">{card.rating}</span>
+          </td>
+          <td class="py-4 px-4 text-center text-white font-medium">{card.cashbackRate}</td>
+          <td class="py-4 px-4 text-center text-gray-300">{card.annualFee}</td>
+          <td class="py-4 px-4 text-center text-gray-300">{card.supportedCryptos[card.supportedCryptos.length - 1]}</td>
+          <td class="py-4 px-4 text-center text-gray-300 whitespace-nowrap">{card.availableRegions.slice(0, 2).join(', ')}</td>
+          <td class="py-4 px-4 text-center">
+            <a href={card.affiliateUrl} target="_blank" rel="nofollow sponsored" class="inline-flex items-center px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-navy-950 font-semibold rounded text-xs transition-colors">
+              Visit
+            </a>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CardItem from '../components/CardItem.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import { cards, getTopCards } from '../content/cards';
+
+const topCards = getTopCards(3);
+
+const faqItems = [
+  {
+    question: "What is a crypto debit card?",
+    answer: "A crypto debit card is a payment card (usually Visa or Mastercard) that lets you spend your cryptocurrency at regular merchants. When you make a purchase, the card automatically converts your crypto to the local fiat currency at the point of sale. This means you can use Bitcoin, Ethereum, or other cryptocurrencies for everyday purchases like groceries, gas, and online shopping."
+  },
+  {
+    question: "Are crypto debit cards safe to use?",
+    answer: "Yes, crypto debit cards from reputable providers are safe to use. They operate on established payment networks like Visa and Mastercard with the same security protections as traditional debit cards, including EMV chip technology, PIN verification, and fraud monitoring. Leading providers like Crypto.com, Coinbase, and Revolut also offer additional security features like instant card freezing, biometric authentication, and real-time transaction notifications."
+  },
+  {
+    question: "Do I have to pay taxes when using a crypto debit card?",
+    answer: "In most jurisdictions, spending cryptocurrency is considered a taxable event because you are effectively selling crypto for goods or services. This means you may owe capital gains tax on any appreciation of the crypto since you acquired it. The exception is stablecoins pegged to fiat currencies, where there is typically no gain to tax. Some cards, like the Nexo Card, offer a credit-line model that may not trigger a taxable event since you are borrowing against your crypto rather than selling it. Always consult a tax professional for advice specific to your situation."
+  },
+  {
+    question: "Which crypto debit card has the best cashback?",
+    answer: "The Crypto.com Visa Card and Binance Card both offer up to 8% cashback, making them the highest in the market. However, achieving the maximum rate requires significant staking of the platform's native token (CRO or BNB). For a free card without staking requirements, the Plutus Card offers 3% cashback on its free tier, which is the highest no-commitment cashback rate available."
+  },
+  {
+    question: "Can I use a crypto debit card internationally?",
+    answer: "Yes, most crypto debit cards work internationally wherever Visa or Mastercard is accepted. Many cards offer zero or low foreign transaction fees, making them excellent travel companions. The card automatically converts your crypto to the local currency. Cards like Crypto.com, Wirex, and Revolut are particularly popular for international use due to their competitive exchange rates and multi-currency support."
+  },
+  {
+    question: "What is the difference between a crypto debit card and a crypto credit card?",
+    answer: "A crypto debit card spends funds you already have, either by converting your existing crypto or drawing from a pre-loaded fiat balance. A crypto credit card extends you a line of credit, similar to a traditional credit card. Some cards like the Nexo Card operate as a hybrid, extending credit against your crypto collateral so you can spend without selling your holdings. Most cards reviewed on this site are debit cards that convert your crypto at the point of sale."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Best Crypto Debit Cards 2026 — Compare Bitcoin & Crypto Cards"
+  description="Find the best Bitcoin & Crypto debit cards. Compare fees, cashback, supported currencies and features. Independent reviews of 12 top crypto cards."
+  jsonLd={faqSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-navy-900 to-navy-950"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-4 py-1.5 mb-6">
+          <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
+          <span class="text-amber-400 text-sm font-medium">Updated March 2026</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+          Best Crypto Debit Cards<br /><span class="text-amber-400">2026</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          Compare the top Bitcoin and crypto debit cards. Find the best cashback rates, lowest fees, and most features for spending your crypto in everyday life.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#comparison" class="cta-button inline-flex items-center justify-center px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-navy-950 font-bold rounded-xl text-lg">
+            Compare All Cards
+            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </a>
+          <a href="/guides/how-crypto-cards-work" class="inline-flex items-center justify-center px-8 py-3.5 border border-navy-600 hover:border-amber-500 text-gray-300 hover:text-amber-400 font-semibold rounded-xl text-lg transition-colors">
+            How It Works
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top 3 Featured Cards -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Top 3 Crypto Debit Cards</h2>
+    <p class="text-gray-400 mb-8">Our highest-rated crypto cards based on cashback, fees, features, and security.</p>
+    <div class="space-y-6">
+      {topCards.map((card, index) => (
+        <CardItem card={card} rank={index + 1} featured={index === 0} />
+      ))}
+    </div>
+  </section>
+
+  <!-- How Crypto Cards Work Section -->
+  <section class="bg-navy-800/30 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 text-center">How Crypto Debit Cards Work</h2>
+      <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        Crypto debit cards bridge the gap between your digital assets and everyday spending. Here is how the process works in four simple steps.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 text-center">
+          <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-amber-400 font-bold text-xl">1</span>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Sign Up & Verify</h3>
+          <p class="text-gray-400 text-sm">Create an account with your chosen card provider and complete identity verification (KYC). Most providers approve within hours.</p>
+        </div>
+        <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 text-center">
+          <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-amber-400 font-bold text-xl">2</span>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Load Crypto</h3>
+          <p class="text-gray-400 text-sm">Transfer cryptocurrency to your card wallet from an exchange or external wallet. Some cards let you buy crypto directly in the app.</p>
+        </div>
+        <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 text-center">
+          <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-amber-400 font-bold text-xl">3</span>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Spend Anywhere</h3>
+          <p class="text-gray-400 text-sm">Use your card at any Visa or Mastercard merchant worldwide. The crypto is automatically converted to local fiat currency at the point of sale.</p>
+        </div>
+        <div class="bg-navy-800 border border-navy-700 rounded-xl p-6 text-center">
+          <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-amber-400 font-bold text-xl">4</span>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Earn Cashback</h3>
+          <p class="text-gray-400 text-sm">Many cards reward you with cashback in crypto on every purchase. Rates range from 1% to 8% depending on the card and your tier level.</p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="/guides/how-crypto-cards-work" class="text-amber-400 hover:text-amber-300 font-medium text-sm inline-flex items-center gap-1">
+          Read our complete guide
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Comparison Table -->
+  <section id="comparison" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">All 12 Crypto Debit Cards Compared</h2>
+    <p class="text-gray-400 mb-8">Side-by-side comparison of all reviewed cards. Click on any card name for the full review.</p>
+    <ComparisonTable cards={cards} />
+    <div class="text-center mt-8">
+      <a href="/vergleich" class="inline-flex items-center justify-center px-6 py-3 border border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-navy-950 font-semibold rounded-lg transition-colors">
+        View Detailed Comparison
+      </a>
+    </div>
+  </section>
+
+  <!-- All Cards List -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-16">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">All Card Reviews</h2>
+    <p class="text-gray-400 mb-8">Detailed reviews of all 12 crypto debit cards in our ranking.</p>
+    <div class="space-y-4">
+      {cards.slice(3).map((card, index) => (
+        <CardItem card={card} rank={index + 4} />
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-navy-800/30 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqItems.map((item) => (
+          <details class="bg-navy-800 border border-navy-700 rounded-xl group">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-4 text-white font-medium hover:text-amber-400 transition-colors">
+              {item.question}
+              <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-6 pb-4 text-gray-400 text-sm leading-relaxed">
+              {item.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Guide Links -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Explore Our Guides</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="/guides/how-crypto-cards-work" class="card-hover bg-navy-800 border border-navy-700 rounded-xl p-6 block">
+        <h3 class="text-white font-semibold mb-2">How Crypto Cards Work</h3>
+        <p class="text-gray-400 text-sm">Everything you need to know about crypto debit cards, from setup to spending.</p>
+      </a>
+      <a href="/guides/best-cards-usa" class="card-hover bg-navy-800 border border-navy-700 rounded-xl p-6 block">
+        <h3 class="text-white font-semibold mb-2">Best Cards for USA</h3>
+        <p class="text-gray-400 text-sm">Top crypto debit cards available to US residents with full comparison.</p>
+      </a>
+      <a href="/guides/best-cards-europe" class="card-hover bg-navy-800 border border-navy-700 rounded-xl p-6 block">
+        <h3 class="text-white font-semibold mb-2">Best Cards for Europe</h3>
+        <p class="text-gray-400 text-sm">The best crypto cards for European users, including EU-specific features.</p>
+      </a>
+      <a href="/guides/anonymous-crypto-cards" class="card-hover bg-navy-800 border border-navy-700 rounded-xl p-6 block">
+        <h3 class="text-white font-semibold mb-2">Anonymous Crypto Cards</h3>
+        <p class="text-gray-400 text-sm">Can you get a crypto card without KYC? The truth about anonymous options.</p>
+      </a>
+      <a href="/guides/crypto-cards-with-cashback" class="card-hover bg-navy-800 border border-navy-700 rounded-xl p-6 block">
+        <h3 class="text-white font-semibold mb-2">Best Cashback Cards</h3>
+        <p class="text-gray-400 text-sm">Maximize your crypto rewards with the highest cashback cards compared.</p>
+      </a>
+      <a href="/blog" class="card-hover bg-navy-800 border border-navy-700 rounded-xl p-6 block">
+        <h3 class="text-white font-semibold mb-2">Blog & News</h3>
+        <p class="text-gray-400 text-sm">Latest articles about crypto payments, tax implications, and industry trends.</p>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
